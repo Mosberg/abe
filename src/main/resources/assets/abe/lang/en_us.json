@@ -1,0 +1,16 @@
+{
+  "item.abe.brewing_kettle": "Brewing Kettle",
+  "item.abe.brewing_kettle_tank": "Brewing Kettle Tank",
+  "item.abe.fermentation_barrel": "Fermentation Barrel",
+  "item.abe.distillery": "Distillery",
+  "item.abe.condenser": "Condenser",
+  "item.abe.aging_barrel": "Aging Barrel",
+  "item.abe.fluid_barrel": "Fluid Barrel",
+  "item.abe.yeast": "Yeast",
+  "item.abe.empty_bottle": "Empty Bottle",
+  "item.abe.bottle_beer": "Bottle of Beer",
+  "item.abe.bottle_beer_aged": "Aged Bottle of Beer",
+  "item.abe.bottle_spirit": "Bottle of Spirit",
+  "item.abe.bottle_spirit_aged": "Aged Bottle of Spirit",
+  "itemGroup.abe.main": "Alcoholic Brewery Enchanted"
+}
