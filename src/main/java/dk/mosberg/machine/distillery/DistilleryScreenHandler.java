@@ -1,17 +1,24 @@
 package dk.mosberg.machine.distillery;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class DistilleryScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<DistilleryScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new DistilleryScreenHandler(syncId, playerInventory),
-            null);
+    public static final ExtendedScreenHandlerType<DistilleryScreenHandler> TYPE =
+            new ExtendedScreenHandlerType<>(
+                    (syncId, playerInventory, buf) -> new DistilleryScreenHandler(syncId,
+                            playerInventory, new DistilleryInventory()));
+
+    public DistilleryScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf buf) {
+        this(syncId, playerInventory, new DistilleryInventory()); // No inventory sync needed for
+                                                                  // simple machines
+    }
 
     private final Inventory inventory;
 
@@ -39,11 +46,11 @@ public class DistilleryScreenHandler extends ScreenHandler {
     }
 
     public int getProgress() {
-        return 0; // TODO: implement
+        return 0; // TODO: sync real progress from block entity
     }
 
     public int getMaxProgress() {
-        return 100; // TODO: implement
+        return 100; // TODO: sync real max progress from block entity
     }
 
     @Override

@@ -1,18 +1,25 @@
 package dk.mosberg.machine.kettle;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class BrewingKettleScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<BrewingKettleScreenHandler> TYPE =
-            new ScreenHandlerType<>((syncId,
-                    playerInventory) -> new BrewingKettleScreenHandler(syncId, playerInventory),
-                    null);
+    public static final ExtendedScreenHandlerType<BrewingKettleScreenHandler> TYPE =
+            new ExtendedScreenHandlerType<>(
+                    (syncId, playerInventory, buf) -> new BrewingKettleScreenHandler(syncId,
+                            playerInventory, new SimpleInventory(1)));
+
+    public BrewingKettleScreenHandler(int syncId, PlayerInventory playerInventory,
+            PacketByteBuf buf) {
+        this(syncId, playerInventory, new SimpleInventory(1)); // No inventory sync needed for
+                                                               // simple machines
+    }
 
     private final Inventory inventory;
     private int progress;

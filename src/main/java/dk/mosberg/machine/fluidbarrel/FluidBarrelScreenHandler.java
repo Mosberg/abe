@@ -1,17 +1,25 @@
 package dk.mosberg.machine.fluidbarrel;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class FluidBarrelScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<FluidBarrelScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new FluidBarrelScreenHandler(syncId, playerInventory),
-            null);
+    public static final ExtendedScreenHandlerType<FluidBarrelScreenHandler> TYPE =
+            new ExtendedScreenHandlerType<>(
+                    (syncId, playerInventory, buf) -> new FluidBarrelScreenHandler(syncId,
+                            playerInventory, new FluidBarrelInventory()));
+
+    public FluidBarrelScreenHandler(int syncId, PlayerInventory playerInventory,
+            PacketByteBuf buf) {
+        this(syncId, playerInventory, new FluidBarrelInventory()); // No inventory sync needed for
+                                                                   // simple machines
+    }
 
     private final Inventory inventory;
 
@@ -39,11 +47,11 @@ public class FluidBarrelScreenHandler extends ScreenHandler {
     }
 
     public int getFluidAmount() {
-        return 0; // TODO: implement
+        return 0; // TODO: sync real fluid amount from block entity
     }
 
     public int getMaxFluid() {
-        return 1000; // TODO: implement
+        return 1000; // TODO: sync real max fluid from block entity
     }
 
     @Override

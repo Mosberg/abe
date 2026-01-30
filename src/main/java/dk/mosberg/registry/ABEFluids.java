@@ -65,8 +65,8 @@ public final class ABEFluids {
 
         @Override
         public Item getBucketItem() {
-            return Items.BUCKET;
-        } // TODO replace with real bucket items
+            return Items.BUCKET; // TODO: Replace with real bucket items for each fluid
+        }
 
         @Override
         protected boolean isInfinite(World world) {

@@ -1,16 +1,24 @@
 package dk.mosberg.machine.condenser;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class CondenserScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<CondenserScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new CondenserScreenHandler(syncId, playerInventory), null);
+    public static final ExtendedScreenHandlerType<CondenserScreenHandler> TYPE =
+            new ExtendedScreenHandlerType<>(
+                    (syncId, playerInventory, buf) -> new CondenserScreenHandler(syncId,
+                            playerInventory, new CondenserInventory()));
+
+    public CondenserScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf buf) {
+        this(syncId, playerInventory, new CondenserInventory()); // No inventory sync needed for
+                                                                 // simple machines
+    }
 
     private final Inventory inventory;
 
@@ -38,11 +46,11 @@ public class CondenserScreenHandler extends ScreenHandler {
     }
 
     public int getProgress() {
-        return 0; // TODO: implement
+        return 0; // TODO: sync real progress from block entity
     }
 
     public int getMaxProgress() {
-        return 100; // TODO: implement
+        return 100; // TODO: sync real max progress from block entity
     }
 
     @Override

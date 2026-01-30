@@ -11,6 +11,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class FluidBarrelBlock extends MachineBlockWithEntity {
+    @Override
+    public net.minecraft.util.ActionResult onUse(net.minecraft.block.BlockState state,
+            net.minecraft.world.World world, net.minecraft.util.math.BlockPos pos,
+            net.minecraft.entity.player.PlayerEntity player, net.minecraft.util.Hand hand,
+            net.minecraft.util.hit.BlockHitResult hit) {
+        if (!world.isClient) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory) {
+                player.openHandledScreen(
+                        (net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory) be);
+            }
+        }
+        return net.minecraft.util.ActionResult.SUCCESS;
+    }
+
     public FluidBarrelBlock() {
         super(Settings.create().strength(3.0f).nonOpaque());
     }

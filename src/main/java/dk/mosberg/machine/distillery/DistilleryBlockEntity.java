@@ -11,15 +11,36 @@ import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class DistilleryBlockEntity extends BlockEntity {
+public class DistilleryBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
+    @Override
+    public Text getDisplayName() {
+        return Text.translatable("block.abe.distillery");
+    }
+
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory,
+            PlayerEntity player) {
+        return new DistilleryScreenHandler(syncId, playerInventory, inv);
+    }
+
+    public void writeScreenOpeningData(PlayerEntity player, PacketByteBuf buf) {
+        // Write any needed data for client sync here (none for now)
+    }
+
     // Helper for NBT read/write for SingleVariantStorage
     public static void readTankNbt(SingleVariantStorage<FluidVariant> tank, NbtCompound nbt) {
         tank.variant = FluidVariant.fromNbt(nbt.getCompound("variant"));

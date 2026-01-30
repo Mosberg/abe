@@ -6,23 +6,23 @@ import dk.mosberg.machine.distillery.DistilleryScreenHandler;
 import dk.mosberg.machine.fermentation.FermentationBarrelScreenHandler;
 import dk.mosberg.machine.fluidbarrel.FluidBarrelScreenHandler;
 import dk.mosberg.machine.kettle.BrewingKettleScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
 public final class ABEScreenHandlers {
-    public static final ScreenHandlerType<BrewingKettleScreenHandler> BREWING_KETTLE =
+    public static final ExtendedScreenHandlerType<BrewingKettleScreenHandler> BREWING_KETTLE =
             BrewingKettleScreenHandler.TYPE;
-    public static final ScreenHandlerType<FermentationBarrelScreenHandler> FERMENTATION_BARREL =
+    public static final ExtendedScreenHandlerType<FermentationBarrelScreenHandler> FERMENTATION_BARREL =
             FermentationBarrelScreenHandler.TYPE;
-    public static final ScreenHandlerType<DistilleryScreenHandler> DISTILLERY =
+    public static final ExtendedScreenHandlerType<DistilleryScreenHandler> DISTILLERY =
             DistilleryScreenHandler.TYPE;
-    public static final ScreenHandlerType<CondenserScreenHandler> CONDENSER =
+    public static final ExtendedScreenHandlerType<CondenserScreenHandler> CONDENSER =
             CondenserScreenHandler.TYPE;
-    public static final ScreenHandlerType<AgingBarrelScreenHandler> AGING_BARREL =
+    public static final ExtendedScreenHandlerType<AgingBarrelScreenHandler> AGING_BARREL =
             AgingBarrelScreenHandler.TYPE;
-    public static final ScreenHandlerType<FluidBarrelScreenHandler> FLUID_BARREL =
+    public static final ExtendedScreenHandlerType<FluidBarrelScreenHandler> FLUID_BARREL =
             FluidBarrelScreenHandler.TYPE;
 
     private ABEScreenHandlers() {}

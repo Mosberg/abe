@@ -1,19 +1,26 @@
 package dk.mosberg.machine.fermentation;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class FermentationBarrelScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<FermentationBarrelScreenHandler> TYPE =
-            new ScreenHandlerType<>(
-                    (syncId, playerInventory) -> new FermentationBarrelScreenHandler(syncId,
-                            playerInventory),
-                    null);
+    public static final ExtendedScreenHandlerType<FermentationBarrelScreenHandler> TYPE =
+            new ExtendedScreenHandlerType<>(
+                    (syncId, playerInventory, buf) -> new FermentationBarrelScreenHandler(syncId,
+                            playerInventory, new FermentationBarrelInventory()));
+
+    public FermentationBarrelScreenHandler(int syncId, PlayerInventory playerInventory,
+            PacketByteBuf buf) {
+        this(syncId, playerInventory, new FermentationBarrelInventory()); // No inventory sync
+                                                                          // needed for simple
+                                                                          // machines
+    }
 
     private final Inventory inventory;
 
@@ -41,11 +48,11 @@ public class FermentationBarrelScreenHandler extends ScreenHandler {
     }
 
     public int getProgress() {
-        return 0; // TODO: implement
+        return 0; // TODO: sync real progress from block entity
     }
 
     public int getMaxProgress() {
-        return 100; // TODO: implement
+        return 100; // TODO: sync real max progress from block entity
     }
 
     @Override

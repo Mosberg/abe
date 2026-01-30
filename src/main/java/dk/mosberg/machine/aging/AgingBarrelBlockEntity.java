@@ -5,13 +5,34 @@ import dk.mosberg.registry.ABEBlockEntities;
 import dk.mosberg.registry.ABEItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AgingBarrelBlockEntity extends BlockEntity {
+public class AgingBarrelBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
+    @Override
+    public Text getDisplayName() {
+        return Text.translatable("block.abe.aging_barrel");
+    }
+
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory,
+            PlayerEntity player) {
+        return new AgingBarrelScreenHandler(syncId, playerInventory, inv);
+    }
+
+    public void writeScreenOpeningData(PlayerEntity player, PacketByteBuf buf) {
+        // Write any needed data for client sync here (none for now)
+    }
+
     // Slot 0: input bottle, Slot 1: output bottle
     private final SimpleInventory inv = new SimpleInventory(2);
 

@@ -34,6 +34,12 @@ public final class ABEItems {
             register("bottle_spirit", new Item(new FabricItemSettings()));
     public static final Item BOTTLE_SPIRIT_AGED =
             register("bottle_spirit_aged", new Item(new FabricItemSettings()));
+    public static final Item SMALL_FLASK =
+            register("small_flask", new Item(new FabricItemSettings()));
+    public static final Item MEDIUM_FLASK =
+            register("medium_flask", new Item(new FabricItemSettings()));
+    public static final Item LARGE_FLASK =
+            register("large_flask", new Item(new FabricItemSettings()));
 
     private ABEItems() {}
 
