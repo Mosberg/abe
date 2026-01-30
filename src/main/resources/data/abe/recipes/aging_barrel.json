@@ -1,6 +1,0 @@
-{
-  "type": "abe:aging_barrel",
-  "input": [{ "item": "abe:bottle_beer" }, { "item": "abe:bottle_spirit" }],
-  "result": [{ "item": "abe:bottle_beer_aged" }, { "item": "abe:bottle_spirit_aged" }],
-  "processingTime": 480000
-}

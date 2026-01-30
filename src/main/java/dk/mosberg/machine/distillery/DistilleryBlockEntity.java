@@ -34,11 +34,11 @@ public class DistilleryBlockEntity extends BlockEntity implements NamedScreenHan
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory,
             PlayerEntity player) {
-        return new DistilleryScreenHandler(syncId, playerInventory, inv);
+        return new DistilleryScreenHandler(syncId, playerInventory, this);
     }
 
     public void writeScreenOpeningData(PlayerEntity player, PacketByteBuf buf) {
-        // Write any needed data for client sync here (none for now)
+        buf.writeBlockPos(getPos());
     }
 
     // Helper for NBT read/write for SingleVariantStorage
@@ -53,7 +53,7 @@ public class DistilleryBlockEntity extends BlockEntity implements NamedScreenHan
     }
 
     // Slot 0: fuel
-    private final SimpleInventory inv = new SimpleInventory(1);
+    public final SimpleInventory inv = new SimpleInventory(1);
 
     public int progress = 0;
     public int burnTime = 0;

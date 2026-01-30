@@ -19,8 +19,31 @@ public class BrewingKettleBlock extends MachineBlockWithEntity {
             BlockHitResult hit) {
         if (!world.isClient) {
             BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof BrewingKettleBlockEntity) {
-                player.openHandledScreen((BrewingKettleBlockEntity) be);
+            if (be instanceof BrewingKettleBlockEntity kettleBe) {
+                player.openHandledScreen(
+                        new net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory() {
+                            @Override
+                            public void writeScreenOpeningData(
+                                    net.minecraft.server.network.ServerPlayerEntity player,
+                                    net.minecraft.network.PacketByteBuf buf) {
+                                // If you need to sync extra data, write it here (e.g.,
+                                // buf.writeBlockPos(pos))
+                                buf.writeBlockPos(pos);
+                            }
+
+                            @Override
+                            public net.minecraft.text.Text getDisplayName() {
+                                return kettleBe.getDisplayName();
+                            }
+
+                            @Override
+                            public net.minecraft.screen.ScreenHandler createMenu(int syncId,
+                                    net.minecraft.entity.player.PlayerInventory inv,
+                                    net.minecraft.entity.player.PlayerEntity player) {
+                                return new dk.mosberg.machine.kettle.BrewingKettleScreenHandler(
+                                        syncId, inv, kettleBe.inv);
+                            }
+                        });
             }
         }
         return net.minecraft.util.ActionResult.SUCCESS;

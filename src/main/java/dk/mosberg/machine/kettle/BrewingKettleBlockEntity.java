@@ -36,7 +36,7 @@ public class BrewingKettleBlockEntity extends BlockEntity implements NamedScreen
     }
 
     // Slot 0: fuel
-    private final SimpleInventory inv = new SimpleInventory(1);
+    public final SimpleInventory inv = new SimpleInventory(1);
 
     public int progress = 0;
     public int burnTime = 0;

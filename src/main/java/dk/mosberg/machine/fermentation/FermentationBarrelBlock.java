@@ -17,10 +17,30 @@ public class FermentationBarrelBlock extends MachineBlockWithEntity {
             net.minecraft.entity.player.PlayerEntity player, net.minecraft.util.Hand hand,
             net.minecraft.util.hit.BlockHitResult hit) {
         if (!world.isClient) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory) {
+            var be = world.getBlockEntity(pos);
+            if (be instanceof FermentationBarrelBlockEntity fermentationBe) {
                 player.openHandledScreen(
-                        (net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory) be);
+                        new net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory() {
+                            @Override
+                            public void writeScreenOpeningData(
+                                    net.minecraft.server.network.ServerPlayerEntity player,
+                                    net.minecraft.network.PacketByteBuf buf) {
+                                fermentationBe.writeScreenOpeningData(player, buf);
+                            }
+
+                            @Override
+                            public net.minecraft.text.Text getDisplayName() {
+                                return fermentationBe.getDisplayName();
+                            }
+
+                            @Override
+                            public net.minecraft.screen.ScreenHandler createMenu(int syncId,
+                                    net.minecraft.entity.player.PlayerInventory inv,
+                                    net.minecraft.entity.player.PlayerEntity player) {
+                                return new FermentationBarrelScreenHandler(syncId, inv,
+                                        fermentationBe);
+                            }
+                        });
             }
         }
         return net.minecraft.util.ActionResult.SUCCESS;

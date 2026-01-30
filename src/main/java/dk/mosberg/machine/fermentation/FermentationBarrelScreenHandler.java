@@ -1,40 +1,59 @@
 package dk.mosberg.machine.fermentation;
 
+import dk.mosberg.machine.MachineConstants;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class FermentationBarrelScreenHandler extends ScreenHandler {
     public static final ExtendedScreenHandlerType<FermentationBarrelScreenHandler> TYPE =
-            new ExtendedScreenHandlerType<>(
-                    (syncId, playerInventory, buf) -> new FermentationBarrelScreenHandler(syncId,
-                            playerInventory, new FermentationBarrelInventory()));
-
-    public FermentationBarrelScreenHandler(int syncId, PlayerInventory playerInventory,
-            PacketByteBuf buf) {
-        this(syncId, playerInventory, new FermentationBarrelInventory()); // No inventory sync
-                                                                          // needed for simple
-                                                                          // machines
-    }
+            new ExtendedScreenHandlerType<>((syncId, playerInventory, buf) -> {
+                BlockPos pos = buf.readBlockPos();
+                World world = playerInventory.player.getWorld();
+                FermentationBarrelBlockEntity be =
+                        (FermentationBarrelBlockEntity) world.getBlockEntity(pos);
+                return new FermentationBarrelScreenHandler(syncId, playerInventory, be);
+            });
 
     private final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
 
-    public FermentationBarrelScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new FermentationBarrelInventory());
-    }
-
+    // Server-side constructor
     public FermentationBarrelScreenHandler(int syncId, PlayerInventory playerInventory,
-            Inventory inventory) {
+            FermentationBarrelBlockEntity be) {
         super(TYPE, syncId);
-        this.inventory = inventory;
-        // Add slots for yeast, output, etc.
+        this.inventory = be.inv;
+        this.propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                if (index == 0)
+                    return be.progress;
+                if (index == 1)
+                    return MachineConstants.FERMENT_TIME_TICKS;
+                return 0;
+            }
+
+            @Override
+            public void set(int index, int value) {
+                if (index == 0)
+                    be.progress = value;
+            }
+
+            @Override
+            public int size() {
+                return 2;
+            }
+        };
+        this.addProperties(propertyDelegate);
         this.addSlot(new Slot(inventory, 0, 56, 53)); // Yeast
-        // ...add more slots as needed
         // Player inventory slots
         int m;
         for (m = 0; m < 3; ++m) {
@@ -47,16 +66,30 @@ public class FermentationBarrelScreenHandler extends ScreenHandler {
         }
     }
 
+    // Client-side constructor
+    public FermentationBarrelScreenHandler(int syncId, PlayerInventory playerInventory,
+            PacketByteBuf buf) {
+        this(syncId, playerInventory, getClientBlockEntity(playerInventory, buf));
+    }
+
+    private static FermentationBarrelBlockEntity getClientBlockEntity(
+            PlayerInventory playerInventory, PacketByteBuf buf) {
+        BlockPos pos = buf.readBlockPos();
+        World world = playerInventory.player.getWorld();
+        return (FermentationBarrelBlockEntity) world.getBlockEntity(pos);
+    }
+
     public int getProgress() {
-        return 0; // TODO: sync real progress from block entity
+        return propertyDelegate.get(0);
     }
 
     public int getMaxProgress() {
-        return 100; // TODO: sync real max progress from block entity
+        return propertyDelegate.get(1);
     }
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slot) {
+        // Implement shift-click logic if needed
         return ItemStack.EMPTY;
     }
 

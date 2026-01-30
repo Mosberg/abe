@@ -1,18 +1,15 @@
 package dk.mosberg.client.screen;
 
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import dk.mosberg.machine.distillery.DistilleryScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 
 public class DistilleryScreen extends HandledScreen<DistilleryScreenHandler> {
-    private static final Identifier TEXTURE =
-            new Identifier("minecraft", "textures/gui/container/furnace.png");
+    // No texture needed; draw programmatically
 
     public DistilleryScreen(DistilleryScreenHandler handler, PlayerInventory inventory,
             Text title) {
@@ -23,17 +20,23 @@ public class DistilleryScreen extends HandledScreen<DistilleryScreenHandler> {
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (this.width - this.backgroundWidth) / 2;
         int y = (this.height - this.backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
 
-        // Progress bar (horizontal)
+        // Draw main background rectangle
+        context.fill(x, y, x + this.backgroundWidth, y + this.backgroundHeight, 0xFF202020); // dark
+                                                                                             // gray
+
+        // Draw slot background
+        context.fill(x + 56, y + 53, x + 56 + 18, y + 53 + 18, 0xFF404040); // fuel slot
+
+        // Draw progress bar (horizontal)
         int progress = handler.getProgress();
         int maxProgress = handler.getMaxProgress();
-        int progressWidth = (int) (24 * (progress / (float) maxProgress));
+        int progressWidth = (int) (24 * (progress / (float) Math.max(1, maxProgress)));
         if (progressWidth > 0) {
-            context.drawTexture(TEXTURE, x + 79, y + 34, 176, 14, progressWidth, 16);
+            context.fill(x + 79, y + 34, x + 79 + progressWidth, y + 34 + 16, 0xFF80FF80); // green
+                                                                                           // bar
         }
     }
 }

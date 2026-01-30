@@ -1,17 +1,14 @@
 
 package dk.mosberg.client.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import dk.mosberg.machine.kettle_tank.BrewingKettleTankScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 public class BrewingKettleTankScreen extends HandledScreen<BrewingKettleTankScreenHandler> {
-    private static final Identifier TEXTURE =
-            new Identifier("minecraft", "textures/gui/container/furnace.png");
+    // No texture needed; draw programmatically
 
     public BrewingKettleTankScreen(BrewingKettleTankScreenHandler handler,
             PlayerInventory inventory, Text title) {
@@ -22,18 +19,27 @@ public class BrewingKettleTankScreen extends HandledScreen<BrewingKettleTankScre
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (this.width - this.backgroundWidth) / 2;
         int y = (this.height - this.backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight, 256,
-                256);
 
-        // Progress bar (horizontal)
+        // Draw main background rectangle
+        context.fill(x, y, x + this.backgroundWidth, y + this.backgroundHeight, 0xFF202020); // dark
+                                                                                             // gray
+
+        // Draw slot backgrounds
+        for (int i = 0; i < 11; i++) {
+            int sx = x + 8 + ((i - 1 + 10) % 5) * 18;
+            int sy = y + 17 + ((i - 1 + 10) / 5) * 18;
+            context.fill(sx, sy, sx + 18, sy + 18, 0xFF404040);
+        }
+
+        // Draw progress bar (horizontal)
         int progress = handler.getProgress();
         int maxProgress = 1; // TODO: sync real max progress if needed
-        int progressWidth = (int) (24 * (progress / (float) maxProgress));
+        int progressWidth = (int) (24 * (progress / (float) Math.max(1, maxProgress)));
         if (progressWidth > 0) {
-            context.drawTexture(TEXTURE, x + 79, y + 34, 176, 14, progressWidth, 16, 256, 256);
+            context.fill(x + 79, y + 34, x + 79 + progressWidth, y + 34 + 16, 0xFF80FF80); // green
+                                                                                           // bar
         }
     }
 }

@@ -1,7 +1,0 @@
-{
-  "type": "abe:condenser",
-  "input": { "fluid": "abe:distillate", "amount": 1000 },
-  "coolant": ["minecraft:ice", "minecraft:packed_ice", "minecraft:snowball"],
-  "result": { "fluid": "abe:condensed", "amount": 1000 },
-  "processingTime": 24000
-}

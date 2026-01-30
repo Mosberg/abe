@@ -33,11 +33,11 @@ public class FermentationBarrelBlockEntity extends BlockEntity
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory,
             PlayerEntity player) {
-        return new FermentationBarrelScreenHandler(syncId, playerInventory, inv);
+        return new FermentationBarrelScreenHandler(syncId, playerInventory, this);
     }
 
     public void writeScreenOpeningData(PlayerEntity player, PacketByteBuf buf) {
-        // Write any needed data for client sync here (none for now)
+        buf.writeBlockPos(getPos());
     }
 
     // Helper for NBT read/write for SingleVariantStorage
@@ -52,7 +52,7 @@ public class FermentationBarrelBlockEntity extends BlockEntity
     }
 
     // Slot 0: yeast
-    private final SimpleInventory inv = new SimpleInventory(1);
+    public final SimpleInventory inv = new SimpleInventory(1);
 
     public int progress = 0;
 

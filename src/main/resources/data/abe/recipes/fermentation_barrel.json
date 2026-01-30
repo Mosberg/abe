@@ -1,7 +1,0 @@
-{
-  "type": "abe:fermentation_barrel",
-  "input": { "fluid": "abe:wort", "amount": 1000 },
-  "yeast": 1,
-  "result": { "fluid": "abe:fermented", "amount": 1000 },
-  "processingTime": 168000
-}

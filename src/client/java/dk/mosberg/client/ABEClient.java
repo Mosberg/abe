@@ -2,6 +2,7 @@ package dk.mosberg.client;
 
 import dk.mosberg.client.screen.AgingBarrelScreen;
 import dk.mosberg.client.screen.BrewingKettleScreen;
+import dk.mosberg.client.screen.BrewingKettleTankScreen;
 import dk.mosberg.client.screen.CondenserScreen;
 import dk.mosberg.client.screen.DistilleryScreen;
 import dk.mosberg.client.screen.FermentationBarrelScreen;
@@ -19,6 +20,8 @@ public class ABEClient implements ClientModInitializer {
 
     private void registerScreens() {
         HandledScreens.register(ABEScreenHandlers.BREWING_KETTLE, BrewingKettleScreen::new);
+        HandledScreens.register(ABEScreenHandlers.BREWING_KETTLE_TANK,
+                BrewingKettleTankScreen::new);
         HandledScreens.register(ABEScreenHandlers.FERMENTATION_BARREL,
                 FermentationBarrelScreen::new);
         HandledScreens.register(ABEScreenHandlers.DISTILLERY, DistilleryScreen::new);

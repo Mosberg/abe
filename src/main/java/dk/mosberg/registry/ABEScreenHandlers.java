@@ -1,3 +1,4 @@
+
 package dk.mosberg.registry;
 
 import dk.mosberg.machine.aging.AgingBarrelScreenHandler;
@@ -6,12 +7,15 @@ import dk.mosberg.machine.distillery.DistilleryScreenHandler;
 import dk.mosberg.machine.fermentation.FermentationBarrelScreenHandler;
 import dk.mosberg.machine.fluidbarrel.FluidBarrelScreenHandler;
 import dk.mosberg.machine.kettle.BrewingKettleScreenHandler;
+import dk.mosberg.machine.kettle_tank.BrewingKettleTankScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public final class ABEScreenHandlers {
+    public static final ExtendedScreenHandlerType<BrewingKettleTankScreenHandler> BREWING_KETTLE_TANK =
+            BrewingKettleTankScreenHandler.TYPE;
     public static final ExtendedScreenHandlerType<BrewingKettleScreenHandler> BREWING_KETTLE =
             BrewingKettleScreenHandler.TYPE;
     public static final ExtendedScreenHandlerType<FermentationBarrelScreenHandler> FERMENTATION_BARREL =
@@ -30,6 +34,8 @@ public final class ABEScreenHandlers {
     public static void register() {
         Registry.register(Registries.SCREEN_HANDLER, new Identifier("abe", "brewing_kettle"),
                 BREWING_KETTLE);
+        Registry.register(Registries.SCREEN_HANDLER, new Identifier("abe", "brewing_kettle_tank"),
+                BREWING_KETTLE_TANK);
         Registry.register(Registries.SCREEN_HANDLER, new Identifier("abe", "fermentation_barrel"),
                 FERMENTATION_BARREL);
         Registry.register(Registries.SCREEN_HANDLER, new Identifier("abe", "distillery"),

@@ -33,11 +33,11 @@ public class CondenserBlockEntity extends BlockEntity implements NamedScreenHand
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory,
             PlayerEntity player) {
-        return new CondenserScreenHandler(syncId, playerInventory, inv);
+        return new CondenserScreenHandler(syncId, playerInventory, this);
     }
 
     public void writeScreenOpeningData(PlayerEntity player, PacketByteBuf buf) {
-        // Write any needed data for client sync here (none for now)
+        buf.writeBlockPos(getPos());
     }
 
     // Helper for NBT read/write for SingleVariantStorage
@@ -52,7 +52,7 @@ public class CondenserBlockEntity extends BlockEntity implements NamedScreenHand
     }
 
     // Slot 0: coolant (ice)
-    private final SimpleInventory inv = new SimpleInventory(1);
+    public final SimpleInventory inv = new SimpleInventory(1);
 
     public int progress = 0;
 
