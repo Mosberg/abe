@@ -1,0 +1,80 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Generated with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"0": "abe:block/pipe_iron",
+		"1": "abe:block/iron_brewing_kettle_side",
+		"2": "abe:block/iron_brewing_kettle_bottom",
+		"3": "abe:block/distillery_top",
+		"particle": "abe:block/pipe_iron"
+	},
+	"elements": [
+		{
+			"name": "distillery",
+			"from": [0, 0, 0],
+			"to": [16, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 12, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 12, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 12, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 12, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "north_pipe_vertical",
+			"from": [6, 4, 3],
+			"to": [10, 10, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -4, -3]},
+			"faces": {
+				"north": {"uv": [0, 4, 4, 10], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 6], "texture": "#0"},
+				"south": {"uv": [0, 4, 4, 10], "texture": "#0"},
+				"west": {"uv": [4, 0, 0, 6], "texture": "#0"},
+				"up": {"uv": [0, 4, 4, 8], "texture": "#0"}
+			}
+		},
+		{
+			"name": "north_pipe_output",
+			"from": [6, 6, 0],
+			"to": [10, 10, 3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, -3]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 8], "texture": "#0"},
+				"east": {"uv": [10, 0, 13, 4], "texture": "#0"},
+				"south": {"uv": [6, 0, 10, 4], "texture": "#0"},
+				"west": {"uv": [13, 0, 10, 4], "texture": "#0"},
+				"up": {"uv": [0, 13, 4, 10], "texture": "#0"},
+				"down": {"uv": [12, 3, 16, 0], "texture": "#0"}
+			}
+		},
+		{
+			"name": "south_pipe_vertical",
+			"from": [6, 4, 9],
+			"to": [10, 10, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -4, 3]},
+			"faces": {
+				"north": {"uv": [0, 3, 4, 9], "texture": "#0"},
+				"east": {"uv": [4, 0, 0, 6], "texture": "#0"},
+				"south": {"uv": [0, 3, 4, 9], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 6], "texture": "#0"},
+				"up": {"uv": [12, 5, 16, 9], "texture": "#0"}
+			}
+		},
+		{
+			"name": "south_pipe_input",
+			"from": [6, 6, 13],
+			"to": [10, 10, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 10]},
+			"faces": {
+				"east": {"uv": [0, 16, 3, 12], "texture": "#0"},
+				"south": {"uv": [4, 4, 8, 8], "texture": "#0"},
+				"west": {"uv": [10, 0, 13, 4], "texture": "#0"},
+				"up": {"uv": [4, 10, 0, 13], "texture": "#0"},
+				"down": {"uv": [0, 13, 4, 10], "texture": "#0"}
+			}
+		}
+	]
+}

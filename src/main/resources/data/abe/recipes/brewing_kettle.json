@@ -1,0 +1,11 @@
+{
+  "type": "abe:brewing_kettle",
+  "ingredients": [
+    { "item": "minecraft:wheat", "count": 8 },
+    { "item": "minecraft:apple", "count": 8 },
+    { "item": "minecraft:dandelion", "count": 2 }
+  ],
+  "fluid": { "fluid": "minecraft:water", "amount": 1000 },
+  "result": { "fluid": "abe:wort", "amount": 1000 },
+  "processingTime": 24000
+}

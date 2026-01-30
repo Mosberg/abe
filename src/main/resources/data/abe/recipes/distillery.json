@@ -1,0 +1,6 @@
+{
+  "type": "abe:distillery",
+  "input": { "fluid": "abe:fermented", "amount": 1000 },
+  "result": { "fluid": "abe:distillate", "amount": 1000 },
+  "processingTime": 72000
+}

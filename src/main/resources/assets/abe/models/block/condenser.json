@@ -1,0 +1,40 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Generated with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"0": "abe:block/iron_brewing_kettle_bottom",
+		"1": "abe:block/iron_brewing_kettle_side_input_output",
+		"2": "abe:block/iron_brewing_kettle_side",
+		"3": "abe:block/iron_coil",
+		"particle": "abe:block/iron_brewing_kettle_bottom"
+	},
+	"elements": [
+		{
+			"name": "condenser",
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"faces": {
+				"north": {"uv": [0, 4, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 4, 16, 16], "texture": "#2"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "coil",
+			"from": [2, 12, 2],
+			"to": [14, 14, 14],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#0"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#missing"}
+			}
+		}
+	]
+}

@@ -1,0 +1,37 @@
+{
+  "credit": "Generated with Blockbench",
+  "parent": "block/block",
+  "textures": {
+    "particle": "brewery:block/hop_dryer_side",
+    "side": "brewery:block/hop_dryer_side",
+    "top": "brewery:block/hop_dryer_top",
+    "bottom": "brewery:block/hop_dryer_bottom",
+    "rack": "brewery:block/hop_dryer_rack"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 4, 16],
+      "faces": {
+        "north": { "uv": [0, 12, 16, 16], "texture": "#side" },
+        "east": { "uv": [0, 12, 16, 16], "texture": "#side" },
+        "south": { "uv": [0, 12, 16, 16], "texture": "#side" },
+        "west": { "uv": [0, 12, 16, 16], "texture": "#side" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#top" },
+        "down": { "uv": [0, 0, 16, 16], "texture": "#bottom" }
+      }
+    },
+    {
+      "from": [2, 4, 2],
+      "to": [14, 12, 14],
+      "faces": {
+        "north": { "uv": [2, 4, 14, 12], "texture": "#rack" },
+        "east": { "uv": [2, 4, 14, 12], "texture": "#rack" },
+        "south": { "uv": [2, 4, 14, 12], "texture": "#rack" },
+        "west": { "uv": [2, 4, 14, 12], "texture": "#rack" },
+        "up": { "uv": [2, 2, 14, 14], "texture": "#top" },
+        "down": { "uv": [2, 2, 14, 14], "texture": "#bottom" }
+      }
+    }
+  ]
+}

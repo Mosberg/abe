@@ -1,0 +1,22 @@
+{
+  "fuel": [
+    { "item": "minecraft:coal", "burnTime": 1200 },
+    { "item": "minecraft:charcoal", "burnTime": 1200 },
+    { "item": "minecraft:coal_block", "burnTime": 12000 }
+  ],
+  "processingTimes": {
+    "kettle": 24000,
+    "fermentation": 168000,
+    "distillation": 72000,
+    "condensing": 24000,
+    "aging": 480000
+  },
+  "batchSizes": {
+    "kettle": 4,
+    "fermentation": 4,
+    "distillation": 2,
+    "condensing": 2,
+    "aging": 4,
+    "fluidBarrel": 16
+  }
+}

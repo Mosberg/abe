@@ -1,0 +1,112 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"4": "abe:block/fermentation_barrel_inner_side",
+		"5": "abe:block/fermentation_iron_barrel_side_input_output",
+		"6": "abe:block/fermentation_iron_barrel_inner_side_input_output",
+		"7": "abe:block/alcohol_still",
+		"8": "abe:block/fermentation_barrel_top_glass",
+		"top": "abe:block/fermentation_barrel_top",
+		"particle": "abe:block/fermentation_iron_barrel_side",
+		"side": "abe:block/fermentation_iron_barrel_side",
+		"inside": "abe:block/fermentation_barrel_bottom"
+	},
+	"elements": [
+		{
+			"name": "bottom",
+			"from": [2, 0, 2],
+			"to": [14, 2, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [2, 14, 14, 16], "texture": "#side"},
+				"east": {"uv": [2, 14, 14, 16], "texture": "#side"},
+				"south": {"uv": [2, 14, 14, 16], "texture": "#side"},
+				"west": {"uv": [2, 14, 14, 16], "texture": "#side"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#inside"}
+			}
+		},
+		{
+			"name": "east",
+			"from": [0, 0, 0],
+			"to": [2, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [14, 0, 16, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"south": {"uv": [0, 0, 2, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 2, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 0, 2, 16], "texture": "#inside"}
+			}
+		},
+		{
+			"name": "west",
+			"from": [14, 0, 0],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [14, 0, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"up": {"uv": [14, 0, 16, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [14, 0, 16, 16], "texture": "#inside"}
+			}
+		},
+		{
+			"name": "north_output",
+			"from": [2, 0, 0],
+			"to": [14, 16, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#5", "cullface": "north"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#6"},
+				"up": {"uv": [2, 0, 14, 2], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [2, 14, 14, 16], "texture": "#inside"}
+			}
+		},
+		{
+			"name": "south_input",
+			"from": [2, 0, 14],
+			"to": [14, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#6"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#5", "cullface": "south"},
+				"up": {"uv": [2, 14, 14, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [2, 0, 14, 2], "texture": "#inside"}
+			}
+		},
+		{
+			"name": "fluid",
+			"from": [2, 2, 2],
+			"to": [14, 14, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 2, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#7"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#7"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#7"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#7"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#7"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#7"}
+			}
+		},
+		{
+			"name": "glass",
+			"from": [2, 14, 2],
+			"to": [14, 16, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 13, 2]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 3], "texture": "#8"},
+				"east": {"uv": [2, 2, 14, 3], "texture": "#8"},
+				"south": {"uv": [2, 2, 14, 3], "texture": "#8"},
+				"west": {"uv": [2, 2, 14, 3], "texture": "#8"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#8"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#8"}
+			}
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+  "credit": "Generated with Blockbench",
+  "parent": "block/block",
+  "textures": {
+    "particle": "brewery:block/yeast_vat_side",
+    "side": "brewery:block/yeast_vat_side",
+    "top": "brewery:block/yeast_vat_top",
+    "bottom": "brewery:block/yeast_vat_bottom"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 10, 15],
+      "faces": {
+        "north": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "east": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "south": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "west": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "up": { "uv": [1, 1, 15, 15], "texture": "#top" },
+        "down": { "uv": [1, 1, 15, 15], "texture": "#bottom" }
+      }
+    }
+  ]
+}
