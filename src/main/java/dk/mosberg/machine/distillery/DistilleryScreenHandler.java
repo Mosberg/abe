@@ -9,8 +9,9 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 
 public class DistilleryScreenHandler extends ScreenHandler {
-    public static final ScreenHandlerType<DistilleryScreenHandler> TYPE =
-            new ScreenHandlerType<>(DistilleryScreenHandler::new);
+    public static final ScreenHandlerType<DistilleryScreenHandler> TYPE = new ScreenHandlerType<>(
+            (syncId, playerInventory) -> new DistilleryScreenHandler(syncId, playerInventory),
+            null);
 
     private final Inventory inventory;
 

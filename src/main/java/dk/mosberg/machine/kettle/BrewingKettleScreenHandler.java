@@ -1,22 +1,17 @@
 package dk.mosberg.machine.kettle;
 
-import net.minecraft.client.gui.screen.ingame.ScreenHandlerProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.ScreenHandlerType.Factory;
 import net.minecraft.screen.slot.Slot;
 
-public class BrewingKettleScreenHandler extends ScreenHandler
-        implements ScreenHandlerProvider<BrewingKettleScreenHandler> {
+public class BrewingKettleScreenHandler extends ScreenHandler {
     public static final ScreenHandlerType<BrewingKettleScreenHandler> TYPE =
-            new ScreenHandlerType<BrewingKettleScreenHandler>(
-                    (Factory<BrewingKettleScreenHandler>) (syncId,
-                            playerInventory) -> new BrewingKettleScreenHandler(syncId,
-                                    playerInventory),
+            new ScreenHandlerType<>((syncId,
+                    playerInventory) -> new BrewingKettleScreenHandler(syncId, playerInventory),
                     null);
 
     private final Inventory inventory;
@@ -67,10 +62,6 @@ public class BrewingKettleScreenHandler extends ScreenHandler
         this.maxProgress = value;
     }
 
-    @Override
-    public BrewingKettleScreenHandler getScreenHandler() {
-        return this;
-    }
 
     @Override
     public net.minecraft.item.ItemStack quickMove(PlayerEntity player, int index) {

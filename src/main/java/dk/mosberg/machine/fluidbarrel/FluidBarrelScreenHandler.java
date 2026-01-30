@@ -10,7 +10,8 @@ import net.minecraft.screen.slot.Slot;
 
 public class FluidBarrelScreenHandler extends ScreenHandler {
     public static final ScreenHandlerType<FluidBarrelScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new FluidBarrelScreenHandler(syncId, playerInventory));
+            (syncId, playerInventory) -> new FluidBarrelScreenHandler(syncId, playerInventory),
+            null);
 
     private final Inventory inventory;
 

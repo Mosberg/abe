@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -15,7 +16,7 @@ public class BrewingKettleBlock extends MachineBlockWithEntity {
     public net.minecraft.util.ActionResult onUse(net.minecraft.block.BlockState state,
             net.minecraft.world.World world, net.minecraft.util.math.BlockPos pos,
             net.minecraft.entity.player.PlayerEntity player, net.minecraft.util.Hand hand,
-            net.minecraft.util.math.BlockHitResult hit) {
+            BlockHitResult hit) {
         if (!world.isClient) {
             BlockEntity be = world.getBlockEntity(pos);
             if (be instanceof BrewingKettleBlockEntity) {

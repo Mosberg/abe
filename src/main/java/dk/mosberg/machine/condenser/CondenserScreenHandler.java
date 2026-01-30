@@ -10,7 +10,7 @@ import net.minecraft.screen.slot.Slot;
 
 public class CondenserScreenHandler extends ScreenHandler {
     public static final ScreenHandlerType<CondenserScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new CondenserScreenHandler(syncId, playerInventory));
+            (syncId, playerInventory) -> new CondenserScreenHandler(syncId, playerInventory), null);
 
     private final Inventory inventory;
 

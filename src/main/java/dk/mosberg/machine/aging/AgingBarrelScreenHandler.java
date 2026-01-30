@@ -10,7 +10,8 @@ import net.minecraft.screen.slot.Slot;
 
 public class AgingBarrelScreenHandler extends ScreenHandler {
     public static final ScreenHandlerType<AgingBarrelScreenHandler> TYPE = new ScreenHandlerType<>(
-            (syncId, playerInventory) -> new AgingBarrelScreenHandler(syncId, playerInventory));
+            (syncId, playerInventory) -> new AgingBarrelScreenHandler(syncId, playerInventory),
+            null);
 
     private final Inventory inventory;
 

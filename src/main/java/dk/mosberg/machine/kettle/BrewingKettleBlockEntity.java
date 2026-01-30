@@ -15,11 +15,26 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class BrewingKettleBlockEntity extends BlockEntity {
+public class BrewingKettleBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
+    @Override
+    public Text getDisplayName() {
+        return Text.translatable("block.abe.brewing_kettle");
+    }
+
+    @Override
+    public ScreenHandler createMenu(int syncId,
+            net.minecraft.entity.player.PlayerInventory playerInventory,
+            net.minecraft.entity.player.PlayerEntity player) {
+        return new BrewingKettleScreenHandler(syncId, playerInventory, inv);
+    }
+
     // Slot 0: fuel
     private final SimpleInventory inv = new SimpleInventory(1);
 

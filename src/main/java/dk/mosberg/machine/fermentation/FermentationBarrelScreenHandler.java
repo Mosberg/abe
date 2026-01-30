@@ -12,7 +12,8 @@ public class FermentationBarrelScreenHandler extends ScreenHandler {
     public static final ScreenHandlerType<FermentationBarrelScreenHandler> TYPE =
             new ScreenHandlerType<>(
                     (syncId, playerInventory) -> new FermentationBarrelScreenHandler(syncId,
-                            playerInventory));
+                            playerInventory),
+                    null);
 
     private final Inventory inventory;
 
