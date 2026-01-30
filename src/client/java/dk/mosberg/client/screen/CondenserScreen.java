@@ -11,10 +11,13 @@ import net.minecraft.util.Identifier;
 
 
 public class CondenserScreen extends HandledScreen<CondenserScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("abe", "textures/gui/condenser.png");
+    private static final Identifier TEXTURE =
+            new Identifier("minecraft", "textures/gui/container/anvil.png");
 
     public CondenserScreen(CondenserScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        this.backgroundWidth = 176;
+        this.backgroundHeight = 166;
     }
 
     @Override

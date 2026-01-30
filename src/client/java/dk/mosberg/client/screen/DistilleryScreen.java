@@ -11,11 +11,14 @@ import net.minecraft.util.Identifier;
 
 
 public class DistilleryScreen extends HandledScreen<DistilleryScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("abe", "textures/gui/distillery.png");
+    private static final Identifier TEXTURE =
+            new Identifier("minecraft", "textures/gui/container/furnace.png");
 
     public DistilleryScreen(DistilleryScreenHandler handler, PlayerInventory inventory,
             Text title) {
         super(handler, inventory, title);
+        this.backgroundWidth = 176;
+        this.backgroundHeight = 166;
     }
 
     @Override

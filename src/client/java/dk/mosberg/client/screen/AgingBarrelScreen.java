@@ -10,11 +10,13 @@ import net.minecraft.util.Identifier;
 
 public class AgingBarrelScreen extends HandledScreen<AgingBarrelScreenHandler> {
     private static final Identifier TEXTURE =
-            new Identifier("abe", "textures/gui/aging_barrel.png");
+            new Identifier("minecraft", "textures/gui/container/furnace.png");
 
     public AgingBarrelScreen(AgingBarrelScreenHandler handler, PlayerInventory inventory,
             Text title) {
         super(handler, inventory, title);
+        this.backgroundWidth = 176;
+        this.backgroundHeight = 166;
     }
 
     @Override

@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class BrewingKettleScreen extends HandledScreen<BrewingKettleScreenHandler> {
     private static final Identifier TEXTURE =
-            new Identifier("abe", "textures/gui/brewing_kettle.png");
+            new Identifier("minecraft", "textures/gui/container/furnace.png");
 
     public BrewingKettleScreen(BrewingKettleScreenHandler handler, PlayerInventory inventory,
             Text title) {

@@ -12,11 +12,13 @@ import net.minecraft.util.Identifier;
 
 public class FluidBarrelScreen extends HandledScreen<FluidBarrelScreenHandler> {
     private static final Identifier TEXTURE =
-            new Identifier("abe", "textures/gui/fluid_barrel.png");
+            new Identifier("minecraft", "textures/gui/container/generic_54.png");
 
     public FluidBarrelScreen(FluidBarrelScreenHandler handler, PlayerInventory inventory,
             Text title) {
         super(handler, inventory, title);
+        this.backgroundWidth = 176;
+        this.backgroundHeight = 166;
     }
 
     @Override

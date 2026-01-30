@@ -10,13 +10,15 @@ public class BrewingKettleRecipeSerializer implements RecipeSerializer<Recipe<?>
     @Override
     public Recipe<?> read(Identifier id, JsonObject json) {
         // TODO: Implement reading from JSON
-        return null;
+        throw new UnsupportedOperationException(
+                "BrewingKettleRecipeSerializer.read from JSON is not implemented");
     }
 
     @Override
     public Recipe<?> read(Identifier id, PacketByteBuf buf) {
         // TODO: Implement reading from network
-        return null;
+        throw new UnsupportedOperationException(
+                "BrewingKettleRecipeSerializer.read from network is not implemented");
     }
 
     @Override
